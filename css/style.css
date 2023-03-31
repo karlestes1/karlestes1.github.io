@@ -68,6 +68,63 @@ section {
     color: var(--main-color);
 }
 
+.navbar li {
+    display: inline-block;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+.navbar li {
+    position: relative;
+}
+
+.sub-menu {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--second-bg-color);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    padding: 1rem 0;
+    white-space: nowrap;
+    list-style: none;
+}
+
+.sub-menu li {
+    display: block;
+    margin: 1.3rem 0;
+}
+
+.sub-menu a {
+    display: block;
+    color: var(--text-color);
+    text-decoration: none;
+    padding-right: 3rem; /* Add padding-right to have equal space on the left and right side */
+}
+
+.multi-level-menu:hover .sub-menu {
+    opacity: 1;
+    visibility: visible;
+}
+
+.arrow {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    font-size: .6em;
+    vertical-align: middle;
+}
+
+.menu-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.menu-wrapper .arrow {
+    margin-left: 0.5rem;
+}
+
 #menu-icon {
     font-size: 3.6rem;
     color: var(--text-color);
@@ -441,6 +498,10 @@ span {
         margin: 3rem 0;
     }
 
+    .navbar li {
+        display: block;
+    }
+
     .home {
         flex-direction: column;
     }
@@ -474,6 +535,47 @@ span {
     .portfolio-container {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .multi-level-menu {
+        position: static;
+    }
+
+    .menu-wrapper a {
+        margin: 0;
+    }
+
+    .menu-wrapper {
+        margin: 3rem 0;
+    }
+
+    .sub-menu {
+        display: none;
+        position: static;
+        background-color: transparent;
+        box-shadow: none;
+        padding: 0;
+        margin-left: 2rem;
+    }
+
+    .multi-level-menu:hover .sub-menu {
+        opacity: unset;
+        visibility: unset;
+    }
+
+    .sub-menu a {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .sub-menu li {
+        margin: 0;
+    }
+
+    .multi-level-menu:hover .sub-menu,
+    .multi-level-menu:focus-within .sub-menu {
+        display: block;
+    }
+
 }
 
 @media (max-width: 617px) {

@@ -7,6 +7,53 @@ menuIcon.onclick = () => {
     navbar.classList.toggle('active');
 };
 
+/* Navbar Arrow Rotation on Hover */
+const multiLevelMenuItems = document.querySelectorAll('.multi-level-menu');
+
+multiLevelMenuItems.forEach(menuItem => {
+    const menuItemLink = menuItem.querySelector('a');
+    const arrow = menuItem.querySelector('.arrow');
+    const subMenu = menuItem.querySelector('.sub-menu');
+
+    menuItemLink.addEventListener('mouseover', () => {
+        arrow.style.transform = 'rotate(90deg)';
+    });
+
+    menuItemLink.addEventListener('mouseout', () => {
+        arrow.style.transform = 'rotate(0deg)';
+    });
+
+    arrow.addEventListener('mouseover', () => {
+        arrow.style.transform = 'rotate(90deg)';
+    });
+
+    arrow.addEventListener('mouseout', () => {
+        arrow.style.transform = 'rotate(0deg)';
+    });
+
+    if (subMenu) {
+        subMenu.addEventListener('mouseover', () => {
+            arrow.style.transform = 'rotate(90deg)';
+        });
+
+        subMenu.addEventListener('mouseout', () => {
+            arrow.style.transform = 'rotate(0deg)';
+        });
+    }
+})
+
+/* Arrow Toggle for Touch Screen Devices */
+document.addEventListener('DOMContentLoaded', function() {
+    const arrows = document.querySelectorAll('.toggle-arrow[data-toggle]');
+
+    arrows.forEach(function(arrow) {
+        arrow.addEventListener('click', function() {
+            let subMenu = this.nextElementSibling;
+            subMenu.style.display = subMenu.style.display === 'block' ? 'none' : 'block';
+        });
+    });
+});
+
 /* Scroll Sections Active Link */
 let sections = document.querySelectorAll("section");
 let navLinks = document.querySelectorAll("header nav a");
@@ -52,8 +99,8 @@ ScrollReveal().reveal('.home-content p, .about-content', {origin: 'right'});
 /* Typed JS*/
 const typed  = new Typed('.multiple-text', {
     strings: ['Software Engineer', 'A.I. Researcher', 'Musician'],
-    typeSpeed: 100,
-    backSpeed: 100,
+    typeSpeed: 80,
+    backSpeed: 80,
     backDelay: 1000,
     loop: true
 });
